@@ -1,4 +1,6 @@
 import { Layout, Menu } from "antd";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { useAppSelector } from "../../redux/hook";
 import { adminPaths } from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
 import { studentPaths } from "../../routes/student.routes";
@@ -10,9 +12,11 @@ const userRole = {
   STUDENT: "student",
 };
 const Sidebar = () => {
-  const role = "faculty";
+  const user = useAppSelector(selectCurrentUser);
   let sidebarItems;
-  switch (role) {
+
+  //   i can use optional chaining ro tarnary operator also
+  switch (user!.role) {
     case userRole.ADMIN:
       sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
       break;

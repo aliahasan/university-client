@@ -1,28 +1,40 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "antd";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { useLoginMutation } from "../redux/features/auth/authApi";
-import { setUser } from "../redux/features/auth/authSlice";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
 import { useAppDispatch } from "../redux/hook";
 import { verifyToken } from "../utils/verifyToken";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       id: "A-0001",
       password: "admin123",
     },
   });
-  const [login, { error }] = useLoginMutation();
+  const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
 
-  const onSubmit = async (data) => {
-    const userInfo = {
-      id: data.id,
-      password: data.password,
-    };
-    const res = await login(userInfo).unwrap();
-    const user = verifyToken(res?.data?.accessToken);
-    dispatch(setUser({ user: user, token: res?.data?.accessToken }));
+  const onSubmit = async (data: FieldValues) => {
+    const toastId = toast.loading("logging in...");
+    try {
+      const userInfo = {
+        id: data.id,
+        password: data.password,
+      };
+      const res = await login(userInfo).unwrap();
+      const user = verifyToken(res?.data?.accessToken) as TUser;
+      console.log(user);
+      dispatch(setUser({ user: user, token: res?.data?.accessToken }));
+      toast.success("Login successful", { id: toastId, duration: 2000 });
+      navigate(`/${user.role}/dashboard`);
+    } catch (error) {
+      toast.error("Invalid ID or Password", { id: toastId, duration: 2000 });
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
