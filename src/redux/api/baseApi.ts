@@ -49,7 +49,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
       api.dispatch(logout());
     }
   }
-
   return result;
 };
 
