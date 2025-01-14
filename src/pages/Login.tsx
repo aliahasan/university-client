@@ -41,9 +41,7 @@ const Login = () => {
       <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
         <PHInput type="text" name="id" label="UserId:"></PHInput>
         <PHInput type="password" name="password" label="Password"></PHInput>
-        <Button htmlType="submit" style={{ marginTop: "16px" }}>
-          Login
-        </Button>
+        <Button htmlType="submit">Login</Button>
       </PHForm>
     </Row>
   );
