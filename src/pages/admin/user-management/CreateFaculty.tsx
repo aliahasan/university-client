@@ -1,7 +1,7 @@
 const CreateFaculty = () => {
   return (
     <div>
-      <h1>Create Faculty</h1>
+      <h1>This is create Faculty component</h1>
     </div>
   );
 };
