@@ -12,7 +12,7 @@ export interface TStudent {
   gender: string;
   dateOfBirth: string;
   email: string;
-  contactNo: string;
+  contactNumber: string;
   emergencyContactNo: string;
   bloodGroup: string;
   presentAddress: string;
