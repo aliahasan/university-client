@@ -17,8 +17,8 @@ export interface TStudent {
   bloodGroup: string;
   presentAddress: string;
   permanentAddress: string;
-  guardian: TGuardian;
-  localGuardian: TLocalGuardian;
+  guardians: TGuardian;
+  localGuardians: TLocalGuardian;
   profileImg: string;
   admissionSemester: TAcademicSemester;
   isDeleted: boolean;
