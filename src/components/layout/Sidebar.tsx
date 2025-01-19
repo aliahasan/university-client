@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Layout, Menu } from "antd";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../redux/hook";
@@ -33,11 +34,11 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      onBreakpoint={(broken) => {
-        console.log(broken);
+      onBreakpoint={(_broken) => {
+        //   console.log(broken);
       }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
+      onCollapse={(_collapsed, _type) => {
+        //   console.log(collapsed, type);
       }}
       style={{
         height: "100vh",
