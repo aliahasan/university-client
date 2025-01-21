@@ -48,7 +48,7 @@ const RegisteredSemesters = () => {
     })
   );
 
-  const handleStatusUpdate = async (data: any) => {
+  const handleStatusUpdate = async (data) => {
     if (!semesterId) {
       notification.error({ message: "No semester selected!" });
       return;
