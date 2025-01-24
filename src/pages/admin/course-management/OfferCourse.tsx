@@ -28,6 +28,7 @@ const OfferCourse = () => {
     { name: "sort", value: "year" },
     { name: "status", value: "UPCOMING" },
   ]);
+  console.log(semesterRegistrationData);
 
   const { data: academicFacultyData } = useGetAcademicFacultiesQuery(undefined);
 

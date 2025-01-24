@@ -24,6 +24,7 @@ const courseManagementApi = baseApi.injectEndpoints({
       },
       providesTags: ["semester"],
       transformResponse: (response: TResponseRedux<TSemester[]>) => {
+        console.log(response);
         return {
           data: response?.data,
           meta: response?.meta,

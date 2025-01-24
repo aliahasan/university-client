@@ -24,6 +24,35 @@ export const adminPaths = [
     element: <AdminDashboard />,
   },
   {
+    name: "User Management",
+    children: [
+      {
+        name: "Create Student",
+        path: "create-student",
+        element: <CreateStudent />,
+      },
+      {
+        name: "Students",
+        path: "students-data",
+        element: <StudentData />,
+      },
+      {
+        path: "student-data/:studentId",
+        element: <StudentDetails />,
+      },
+      {
+        name: "Create Admin",
+        path: "create-admin",
+        element: <CreateAdmin />,
+      },
+      {
+        name: "Create Faculty",
+        path: "create-faculty",
+        element: <CreateFaculty />,
+      },
+    ],
+  },
+  {
     name: "Academic Management",
     children: [
       {
@@ -58,35 +87,7 @@ export const adminPaths = [
       },
     ],
   },
-  {
-    name: "User Management",
-    children: [
-      {
-        name: "Create Student",
-        path: "create-student",
-        element: <CreateStudent />,
-      },
-      {
-        name: "Students",
-        path: "students-data",
-        element: <StudentData />,
-      },
-      {
-        path: "student-data/:studentId",
-        element: <StudentDetails />,
-      },
-      {
-        name: "Create Admin",
-        path: "create-admin",
-        element: <CreateAdmin />,
-      },
-      {
-        name: "Create Faculty",
-        path: "create-faculty",
-        element: <CreateFaculty />,
-      },
-    ],
-  },
+
   {
     name: "Course Management",
     children: [
