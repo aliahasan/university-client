@@ -28,19 +28,25 @@ const Login = () => {
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
+      console.log(res);
       const user = verifyToken(res?.data?.accessToken) as TUser;
       dispatch(setUser({ user: user, token: res?.data?.accessToken }));
       toast.success("Login successful", { id: toastId, duration: 2000 });
-      navigate(`/${user.role}/dashboard`);
+      if (res?.data?.needPasswordChange) {
+        navigate("/change-password");
+      } else {
+        navigate(`/${user.role}/dashboard`);
+      }
     } catch (error) {
       toast.error("Invalid ID or Password", { id: toastId, duration: 2000 });
     }
-  };
+  }; //password123
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
         <PHInput type="text" name="id" label="UserId:"></PHInput>
         <PHInput type="password" name="password" label="Password"></PHInput>
+        {/* <PHInput type="text" name="password" label="Password"></PHInput> */}
         <Button htmlType="submit">Login</Button>
       </PHForm>
     </Row>
